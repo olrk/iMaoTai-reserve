@@ -11,7 +11,7 @@ DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
 TODAY = datetime.date.today().strftime("%Y%m%d")
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s  %(filename)s : %(levelname)s  %(message)s',  # 定义输出log的格式
-                    stream=sys.stdout,
+                    filename='server.log',
                     datefmt=DATE_FORMAT)
 
 print(r'''
@@ -73,7 +73,7 @@ for section in configs.sections():
             r_success, r_content = process.reservation(reservation_params, mobile)
             # 为了防止漏掉推送异常，所有只要有一个异常，标题就显示失败
             if not r_success:
-                s_title = '！！失败！！茅台预约'
+                s_title = '【i茅台预约】：失败'
             s_content = s_content + r_content + shopInfo + "\n"
             # 领取小茅运和耐力值
             process.getUserEnergyAward(mobile)
