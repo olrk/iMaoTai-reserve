@@ -16,7 +16,6 @@ RUN pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple 
     ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /etc/timezone && \
     apt-get update && \
     apt-get install -y cron && \
-    service cron start && \
     crontab cron_script
 
 CMD ["sh", "/app/start_cron.sh"]
